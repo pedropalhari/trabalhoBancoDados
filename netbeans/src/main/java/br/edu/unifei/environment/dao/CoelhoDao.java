@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
 public class CoelhoDao extends GenericoDao<Coelho, Integer>{
 
     public CoelhoDao(EntityManager em) {
-        super(null);
+        super(em);
     }
     
 }

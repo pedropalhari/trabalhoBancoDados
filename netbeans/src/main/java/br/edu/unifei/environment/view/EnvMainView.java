@@ -49,6 +49,7 @@ public class EnvMainView {
         
         Mundo m = new Mundo();
         m.addSer(a);
+        m.addSer(c);
         
         mundoDao.create(m);
     }

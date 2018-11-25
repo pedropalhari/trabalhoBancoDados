@@ -12,6 +12,8 @@ import javax.persistence.Id;
  *
  * @author pedro
  */
+
+@Entity
 public abstract class Animal<S extends Ser, A extends Animal> extends Ser {
 
     int ataque;
