@@ -1,0 +1,113 @@
+@startuml
+
+note as Note
+<i>Há uma função que pega todos os seres,
+<i>transforma-os em suas classes e roda seus updates
+<i>Faz modificações em cada classe e
+<i>persiste todas de uma vez.
+
+transaction.begin();
+... <i>todas os updates dos seres</i>
+transaction.commit();
+end note
+
+Mundo "mundo 1" o--> "seres *" Ser
+class Mundo {
+
+}
+note left of Mundo
+<i>Referência entre todos os Seres
+<i>para eles saberem quem caçar,
+<i> acasalar, etc
+end note
+
+' ---------- ABSTRATAS ----------
+
+abstract class Ser <<abstract>>{
+  - x : int
+  - y : int
+  - vida : int
+
+  # {abstract} update() : void
+}
+note left of Ser::update
+<i>Função que roda uma vez todo
+<i>turno. Ela é chamada pelo updater.
+end note
+
+
+' Plantas crescem baseado em sua vida, quanto mais turnos
+' mais vida obtêm. Toda planta cresce todo turno
+Ser <|--- Planta
+abstract class Planta {
+  # crescer() : void
+  # espalhar() : void
+}
+note left of Planta::crescer
+vida += 10;
+end note
+note left of Planta::espalhar
+<i>As plantas quando atingem uma certa
+<i>quantidade de vida se espalham e criam
+<i>novas plantas nos quadrados próximos
+end note
+
+Ser <|--- Animal
+abstract class Animal <S extends Ser, A extends Animal>{
+  - ataque : int
+  - movimento : int
+  - fome : int
+  - desejo : int
+	- presa : S
+	- companheiro : A
+
+  # comer(S) : void
+  # andar() : void
+  # reproduzir(A) : A
+}
+note left of Animal::fome
+<i>A fome cresce a cada turno,
+<i>diminui quando o comer mata
+<i>um ser e determina a vontade
+<i>de andar em direção a
+<i>outo ser e atacar.
+end note
+note left of Animal::comer
+<i>O animal tem que estar a 1
+<i>pos de distância de outro para
+<i>poder comê-lo
+end note
+note left of Animal::andar
+<i>O animal só pode andar para um lugar vazio
+end note
+note left of Animal::reproduzir
+<i>O animal tem de estar perto
+<i>de outro animal para reproduzir
+<i>criando outro animal
+end note
+
+
+' ---------- CONCRETAS ----------
+
+' ---------- ANIMAIS ----------
+
+Animal <|--- Coelho
+class Coelho {
+  # comer(Planta) : void
+  # reproduzir(Coelho) : void
+}
+
+Animal <|--- Lobo
+class Lobo {
+  # comer(Coelho) : void
+  # reproduzir(Lobo) : void
+}
+
+' ---------- PLANTAS ----------
+
+Planta <|--- Arvore
+class Arvore {
+
+}
+
+@enduml
