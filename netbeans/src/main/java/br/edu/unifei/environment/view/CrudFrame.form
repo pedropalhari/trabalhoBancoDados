@@ -614,24 +614,24 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreatePlantaX1" min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="UpdatePlantaX" min="-2" pref="144" max="-2" attributes="0"/>
                                       <EmptySpace pref="49" max="32767" attributes="0"/>
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreatePlantaY1" min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="UpdatePlantaY" min="-2" pref="144" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="CreatePlanta1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="UpdatePlanta" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreatePlantaVida1" min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="UpdatePlantaVida" min="-2" pref="144" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jComboBox3" min="-2" pref="277" max="-2" attributes="0"/>
+                                      <Component id="UpdatePlantaCombo" min="-2" pref="277" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton1" max="32767" attributes="0"/>
+                                      <Component id="UpdatePlantaButton" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -643,45 +643,46 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdatePlantaCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdatePlantaButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreatePlantaX1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdatePlantaX" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CreatePlantaY1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdatePlantaY" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreatePlantaVida1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdatePlantaVida" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="145" max="32767" attributes="0"/>
-                              <Component id="CreatePlanta1" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="UpdatePlanta" min="-2" pref="57" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="UpdatePlantaCombo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jComboBox3MouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="UpdatePlantaComboMouseClicked"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePlantaComboActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreatePlantaX1">
+                    <Component class="javax.swing.JTextField" name="UpdatePlantaX">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlantaX1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePlantaXActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel19">
@@ -689,7 +690,7 @@
                         <Property name="text" type="java.lang.String" value="X:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreatePlantaY1">
+                    <Component class="javax.swing.JTextField" name="UpdatePlantaY">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel20">
                       <Properties>
@@ -701,23 +702,26 @@
                         <Property name="text" type="java.lang.String" value="Vida:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreatePlantaVida1">
+                    <Component class="javax.swing.JTextField" name="UpdatePlantaVida">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlantaVida1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePlantaVidaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="CreatePlanta1">
+                    <Component class="javax.swing.JButton" name="UpdatePlanta">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlanta1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePlantaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="UpdatePlantaButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Atualizar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePlantaButtonActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -737,7 +741,7 @@
                               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="CreateAnimalVida1" min="-2" pref="144" max="-2" attributes="0"/>
+                              <Component id="UpdateAnimalVida" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -748,12 +752,12 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="CreateAnimalFome1" max="32767" attributes="0"/>
+                                              <Component id="UpdateAnimalFome" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="CreateAnimalX1" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <Component id="UpdateAnimalX" min="-2" pref="144" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -761,29 +765,29 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="CreateAnimalY1" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <Component id="UpdateAnimalY" min="-2" pref="144" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="CreateAnimalMov1" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <Component id="UpdateAnimalMov" min="-2" pref="144" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="CreateAnimal1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="UpdateAnimal" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateAnimalAtaque1" max="32767" attributes="0"/>
+                                      <Component id="UpdateAnimalAtk" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateAnimalDesejo1" min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="UpdateAnimalDes" min="-2" pref="144" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="CreateAnimalSelect1" min="-2" pref="277" max="-2" attributes="0"/>
+                                      <Component id="UpdateAnimalCombo" min="-2" pref="277" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton2" max="32767" attributes="0"/>
+                                      <Component id="UpdateAnimalButton" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -795,49 +799,52 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreateAnimalSelect1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreateAnimalX1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalX" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CreateAnimalY1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalY" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreateAnimalFome1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalFome" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CreateAnimalMov1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalMov" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="41" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreateAnimalAtaque1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalAtk" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CreateAnimalDesejo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalDes" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="CreateAnimalVida1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UpdateAnimalVida" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="CreateAnimal1" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="UpdateAnimal" min="-2" pref="57" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="CreateAnimalSelect1">
+                    <Component class="javax.swing.JComboBox" name="UpdateAnimalCombo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalComboActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -847,12 +854,12 @@
                         <Property name="text" type="java.lang.String" value="X:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalX1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalX">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateAnimalX1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalXActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalY1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalY">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel23">
                       <Properties>
@@ -864,9 +871,9 @@
                         <Property name="text" type="java.lang.String" value="Fome:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalFome1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalFome">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateAnimalFome1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalFomeActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel25">
@@ -874,24 +881,24 @@
                         <Property name="text" type="java.lang.String" value="Mov:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalMov1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalMov">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel26">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Vida:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalVida1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalVida">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateAnimalVida1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalVidaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="CreateAnimal1">
+                    <Component class="javax.swing.JButton" name="UpdateAnimal">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateAnimal1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel27">
@@ -899,9 +906,9 @@
                         <Property name="text" type="java.lang.String" value="Atk:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalAtaque1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalAtk">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateAnimalAtaque1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalAtkActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
@@ -909,12 +916,15 @@
                         <Property name="text" type="java.lang.String" value="Des:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="CreateAnimalDesejo1">
+                    <Component class="javax.swing.JTextField" name="UpdateAnimalDes">
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="UpdateAnimalButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Atualizar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateAnimalButtonActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -937,8 +947,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton3" pref="401" max="32767" attributes="0"/>
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <Component id="DeleteRefresh" max="32767" attributes="0"/>
+                          <Component id="DeleteButton" alignment="1" pref="401" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -947,10 +958,12 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Component id="DeleteRefresh" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="282" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="230" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" pref="78" max="32767" attributes="0"/>
+                      <Component id="DeleteButton" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -964,16 +977,10 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="jList2">
+                <Component class="javax.swing.JList" name="DeleteList">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -982,10 +989,24 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="DeleteButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3d" green="62" red="e4" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Deletar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="DeleteRefresh">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteRefreshActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

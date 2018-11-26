@@ -10,10 +10,12 @@ import br.edu.unifei.environment.dao.CoelhoDao;
 import br.edu.unifei.environment.dao.LoboDao;
 import br.edu.unifei.environment.dao.MundoDao;
 import br.edu.unifei.environment.dao.SerDao;
+import br.edu.unifei.environment.modelo.Animal;
 import br.edu.unifei.environment.modelo.Arvore;
 import br.edu.unifei.environment.modelo.Coelho;
 import br.edu.unifei.environment.modelo.Lobo;
 import br.edu.unifei.environment.modelo.Mundo;
+import br.edu.unifei.environment.modelo.Ser;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -30,6 +32,7 @@ public class CrudFrame extends javax.swing.JFrame {
     static private LoboDao loboDao;
     static private SerDao serDao;
     static private Mundo m;
+    static int updateId;
 
     /**
      * Creates new form CrudFrame
@@ -98,37 +101,38 @@ public class CrudFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        CreatePlantaX1 = new javax.swing.JTextField();
+        UpdatePlantaCombo = new javax.swing.JComboBox<>();
+        UpdatePlantaX = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        CreatePlantaY1 = new javax.swing.JTextField();
+        UpdatePlantaY = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        CreatePlantaVida1 = new javax.swing.JTextField();
-        CreatePlanta1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        UpdatePlantaVida = new javax.swing.JTextField();
+        UpdatePlanta = new javax.swing.JButton();
+        UpdatePlantaButton = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
-        CreateAnimalSelect1 = new javax.swing.JComboBox<>();
+        UpdateAnimalCombo = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
-        CreateAnimalX1 = new javax.swing.JTextField();
-        CreateAnimalY1 = new javax.swing.JTextField();
+        UpdateAnimalX = new javax.swing.JTextField();
+        UpdateAnimalY = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        CreateAnimalFome1 = new javax.swing.JTextField();
+        UpdateAnimalFome = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        CreateAnimalMov1 = new javax.swing.JTextField();
+        UpdateAnimalMov = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        CreateAnimalVida1 = new javax.swing.JTextField();
-        CreateAnimal1 = new javax.swing.JButton();
+        UpdateAnimalVida = new javax.swing.JTextField();
+        UpdateAnimal = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        CreateAnimalAtaque1 = new javax.swing.JTextField();
+        UpdateAnimalAtk = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        CreateAnimalDesejo1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        UpdateAnimalDes = new javax.swing.JTextField();
+        UpdateAnimalButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jButton3 = new javax.swing.JButton();
+        DeleteList = new javax.swing.JList<>();
+        DeleteButton = new javax.swing.JButton();
+        DeleteRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD");
@@ -443,15 +447,20 @@ public class CrudFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Read", jPanel2);
 
-        jComboBox3.addMouseListener(new java.awt.event.MouseAdapter() {
+        UpdatePlantaCombo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBox3MouseClicked(evt);
+                UpdatePlantaComboMouseClicked(evt);
+            }
+        });
+        UpdatePlantaCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePlantaComboActionPerformed(evt);
             }
         });
 
-        CreatePlantaX1.addActionListener(new java.awt.event.ActionListener() {
+        UpdatePlantaX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePlantaX1ActionPerformed(evt);
+                UpdatePlantaXActionPerformed(evt);
             }
         });
 
@@ -461,20 +470,25 @@ public class CrudFrame extends javax.swing.JFrame {
 
         jLabel21.setText("Vida:");
 
-        CreatePlantaVida1.addActionListener(new java.awt.event.ActionListener() {
+        UpdatePlantaVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePlantaVida1ActionPerformed(evt);
+                UpdatePlantaVidaActionPerformed(evt);
             }
         });
 
-        CreatePlanta1.setText("Update");
-        CreatePlanta1.addActionListener(new java.awt.event.ActionListener() {
+        UpdatePlanta.setText("Update");
+        UpdatePlanta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePlanta1ActionPerformed(evt);
+                UpdatePlantaActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Atualizar");
+        UpdatePlantaButton.setText("Atualizar");
+        UpdatePlantaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePlantaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -486,22 +500,22 @@ public class CrudFrame extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreatePlantaX1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdatePlantaX, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreatePlantaY1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CreatePlanta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UpdatePlantaY, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UpdatePlanta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreatePlantaVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdatePlantaVida, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdatePlantaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(UpdatePlantaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -509,30 +523,36 @@ public class CrudFrame extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(UpdatePlantaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdatePlantaButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreatePlantaX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdatePlantaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(CreatePlantaY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdatePlantaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreatePlantaVida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdatePlantaVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addComponent(CreatePlanta1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdatePlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jTabbedPane4.addTab("Planta", jPanel11);
 
+        UpdateAnimalCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateAnimalComboActionPerformed(evt);
+            }
+        });
+
         jLabel22.setText("X:");
 
-        CreateAnimalX1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAnimalX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAnimalX1ActionPerformed(evt);
+                UpdateAnimalXActionPerformed(evt);
             }
         });
 
@@ -540,9 +560,9 @@ public class CrudFrame extends javax.swing.JFrame {
 
         jLabel24.setText("Fome:");
 
-        CreateAnimalFome1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAnimalFome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAnimalFome1ActionPerformed(evt);
+                UpdateAnimalFomeActionPerformed(evt);
             }
         });
 
@@ -550,30 +570,35 @@ public class CrudFrame extends javax.swing.JFrame {
 
         jLabel26.setText("Vida:");
 
-        CreateAnimalVida1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAnimalVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAnimalVida1ActionPerformed(evt);
+                UpdateAnimalVidaActionPerformed(evt);
             }
         });
 
-        CreateAnimal1.setText("Update");
-        CreateAnimal1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAnimal.setText("Update");
+        UpdateAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAnimal1ActionPerformed(evt);
+                UpdateAnimalActionPerformed(evt);
             }
         });
 
         jLabel27.setText("Atk:");
 
-        CreateAnimalAtaque1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAnimalAtk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAnimalAtaque1ActionPerformed(evt);
+                UpdateAnimalAtkActionPerformed(evt);
             }
         });
 
         jLabel28.setText("Des:");
 
-        jButton2.setText("Atualizar");
+        UpdateAnimalButton.setText("Atualizar");
+        UpdateAnimalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateAnimalButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -583,7 +608,7 @@ public class CrudFrame extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateAnimalVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdateAnimalVida, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
@@ -593,34 +618,34 @@ public class CrudFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CreateAnimalFome1))
+                                .addComponent(UpdateAnimalFome))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CreateAnimalX1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(UpdateAnimalX, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CreateAnimalY1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(UpdateAnimalY, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CreateAnimalMov1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(CreateAnimal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(UpdateAnimalMov, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(UpdateAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreateAnimalAtaque1)
+                        .addComponent(UpdateAnimalAtk)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreateAnimalDesejo1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(UpdateAnimalDes, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(CreateAnimalSelect1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateAnimalCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(UpdateAnimalButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -628,32 +653,32 @@ public class CrudFrame extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreateAnimalSelect1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(UpdateAnimalCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreateAnimalX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
-                    .addComponent(CreateAnimalY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreateAnimalFome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalFome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
-                    .addComponent(CreateAnimalMov1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreateAnimalAtaque1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
-                    .addComponent(CreateAnimalDesejo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CreateAnimalVida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateAnimalVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26))
                 .addGap(36, 36, 36)
-                .addComponent(CreateAnimal1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdateAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -672,14 +697,22 @@ public class CrudFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Update", jPanel3);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(DeleteList);
 
-        jButton3.setText("jButton3");
+        DeleteButton.setBackground(new java.awt.Color(228, 98, 61));
+        DeleteButton.setText("Deletar");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
+
+        DeleteRefresh.setText("Atualizar");
+        DeleteRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteRefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -688,17 +721,20 @@ public class CrudFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                    .addComponent(DeleteRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(DeleteRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -836,41 +872,148 @@ public class CrudFrame extends javax.swing.JFrame {
         ReadAnimalList.setListData(animalInstanceList.toArray(arvoreInstanceString));
     }//GEN-LAST:event_ReadAnimalActionPerformed
 
-    private void CreatePlantaX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlantaX1ActionPerformed
+    private void UpdatePlantaXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePlantaXActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreatePlantaX1ActionPerformed
+    }//GEN-LAST:event_UpdatePlantaXActionPerformed
 
-    private void CreatePlantaVida1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlantaVida1ActionPerformed
+    private void UpdatePlantaVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePlantaVidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreatePlantaVida1ActionPerformed
+    }//GEN-LAST:event_UpdatePlantaVidaActionPerformed
 
-    private void CreatePlanta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlanta1ActionPerformed
+    private void UpdatePlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePlantaActionPerformed
+        updateId = Integer.parseInt(UpdatePlantaCombo.getSelectedItem().toString());
+
+        for (Ser ser : this.m.getSeres()) {
+            if (ser.getId() == updateId) {
+                ser.setX(Integer.parseInt(UpdatePlantaX.getText()));
+                ser.setY(Integer.parseInt(UpdatePlantaY.getText()));
+                ser.setVida(Integer.parseInt(UpdatePlantaVida.getText()));
+            }
+        };
+
+        this.mundoDao.update(this.m);
+    }//GEN-LAST:event_UpdatePlantaActionPerformed
+
+    private void UpdateAnimalXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalXActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreatePlanta1ActionPerformed
+    }//GEN-LAST:event_UpdateAnimalXActionPerformed
 
-    private void CreateAnimalX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAnimalX1ActionPerformed
+    private void UpdateAnimalFomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalFomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreateAnimalX1ActionPerformed
+    }//GEN-LAST:event_UpdateAnimalFomeActionPerformed
 
-    private void CreateAnimalFome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAnimalFome1ActionPerformed
+    private void UpdateAnimalVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalVidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreateAnimalFome1ActionPerformed
+    }//GEN-LAST:event_UpdateAnimalVidaActionPerformed
 
-    private void CreateAnimalVida1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAnimalVida1ActionPerformed
+    private void UpdateAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalActionPerformed
+        updateId = Integer.parseInt(UpdateAnimalCombo.getSelectedItem().toString());
+
+        for (Ser serAux : this.m.getSeres()) {
+            if (serAux.getId() == updateId) {
+                Animal ser = (Animal) serAux;
+
+                ser.setX(Integer.parseInt(UpdateAnimalX.getText()));
+                ser.setY(Integer.parseInt(UpdateAnimalY.getText()));
+                ser.setAtaque(Integer.parseInt(UpdateAnimalAtk.getText()));
+                ser.setDesejo(Integer.parseInt(UpdateAnimalDes.getText()));
+                ser.setFome(Integer.parseInt(UpdateAnimalFome.getText()));
+                ser.setMovimento(Integer.parseInt(UpdateAnimalMov.getText()));
+                ser.setVida(Integer.parseInt(UpdateAnimalVida.getText()));
+
+            }
+        };
+
+        this.mundoDao.update(this.m);
+    }//GEN-LAST:event_UpdateAnimalActionPerformed
+
+    private void UpdateAnimalAtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalAtkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CreateAnimalVida1ActionPerformed
+    }//GEN-LAST:event_UpdateAnimalAtkActionPerformed
 
-    private void CreateAnimal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAnimal1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreateAnimal1ActionPerformed
-
-    private void CreateAnimalAtaque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAnimalAtaque1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreateAnimalAtaque1ActionPerformed
-
-    private void jComboBox3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox3MouseClicked
+    private void UpdatePlantaComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdatePlantaComboMouseClicked
         System.out.println("DASDASDS");        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3MouseClicked
+    }//GEN-LAST:event_UpdatePlantaComboMouseClicked
+
+    private void UpdatePlantaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePlantaButtonActionPerformed
+        UpdatePlantaCombo.removeAllItems();
+
+        this.arvoreDao.findAll().forEach(arvore -> {
+            UpdatePlantaCombo.addItem(Integer.toString(arvore.getId()));
+        });        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdatePlantaButtonActionPerformed
+
+    private void UpdatePlantaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatePlantaComboActionPerformed
+        updateId = Integer.parseInt(UpdatePlantaCombo.getSelectedItem().toString());
+
+        this.m.getSeres().forEach(ser -> {
+            if (ser.getId() == updateId) {
+                UpdatePlantaX.setText(Integer.toString(ser.getX()));
+                UpdatePlantaY.setText(Integer.toString(ser.getY()));
+                UpdatePlantaVida.setText(Integer.toString(ser.getVida()));
+            }
+        });
+    }//GEN-LAST:event_UpdatePlantaComboActionPerformed
+
+    private void UpdateAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalButtonActionPerformed
+        UpdateAnimalCombo.removeAllItems();
+
+        this.coelhoDao.findAll().forEach(coelho -> {
+            UpdateAnimalCombo.addItem(Integer.toString(coelho.getId()));
+        });
+
+        this.loboDao.findAll().forEach(lobo -> {
+            UpdateAnimalCombo.addItem(Integer.toString(lobo.getId()));
+        });
+    }//GEN-LAST:event_UpdateAnimalButtonActionPerformed
+
+    private void UpdateAnimalComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAnimalComboActionPerformed
+        updateId = Integer.parseInt(UpdateAnimalCombo.getSelectedItem().toString());
+
+        this.m.getSeres().forEach(serAux -> {
+            if (serAux.getId() == updateId) {
+                Animal ser = (Animal) serAux;
+                UpdateAnimalX.setText(Integer.toString(ser.getX()));
+                UpdateAnimalY.setText(Integer.toString(ser.getY()));
+                UpdateAnimalAtk.setText(Integer.toString(ser.getAtaque()));
+                UpdateAnimalDes.setText(Integer.toString(ser.getDesejo()));
+                UpdateAnimalFome.setText(Integer.toString(ser.getFome()));
+                UpdateAnimalMov.setText(Integer.toString(ser.getMovimento()));
+                UpdateAnimalVida.setText(Integer.toString(ser.getVida()));
+            }
+        });
+    }//GEN-LAST:event_UpdateAnimalComboActionPerformed
+
+    private void DeleteRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRefreshActionPerformed
+        List<String> serList = new ArrayList<>();
+
+        this.serDao.findAll().forEach(ser -> {
+            String classe = ser.getClass().getName().substring(ser.getClass().getName().indexOf("modelo") + 7);
+
+            serList.add("(" + classe + ") ID: " + ser.getId() + "   <X: " + ser.getX() + " Y: "
+                    + ser.getY() + " VIDA " + ser.getVida() + ">");
+        });
+
+        String[] serStringList = new String[serList.size()];
+        DeleteList.setListData(serList.toArray(serStringList));
+    }//GEN-LAST:event_DeleteRefreshActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        int serId
+                = Integer.parseInt(DeleteList.getSelectedValue().substring(
+                        DeleteList.getSelectedValue().indexOf("ID: ") + 4,
+                        DeleteList.getSelectedValue().indexOf("   <X:")
+                ));
+
+        for (Ser ser : this.m.getSeres()) {
+            if (ser.getId() == serId) {
+                this.m.getSeres().remove(ser);
+            }
+        }
+
+        this.mundoDao.update(this.m);
+        this.DeleteRefreshActionPerformed(null);
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -907,39 +1050,41 @@ public class CrudFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> BuscarPlantaCombo;
     private javax.swing.JList<String> BuscarPlantaList;
     private javax.swing.JButton CreateAnimal;
-    private javax.swing.JButton CreateAnimal1;
     private javax.swing.JTextField CreateAnimalAtaque;
-    private javax.swing.JTextField CreateAnimalAtaque1;
     private javax.swing.JTextField CreateAnimalDesejo;
-    private javax.swing.JTextField CreateAnimalDesejo1;
     private javax.swing.JTextField CreateAnimalFome;
-    private javax.swing.JTextField CreateAnimalFome1;
     private javax.swing.JTextField CreateAnimalMov;
-    private javax.swing.JTextField CreateAnimalMov1;
     private javax.swing.JComboBox<String> CreateAnimalSelect;
-    private javax.swing.JComboBox<String> CreateAnimalSelect1;
     private javax.swing.JTextField CreateAnimalVida;
-    private javax.swing.JTextField CreateAnimalVida1;
     private javax.swing.JTextField CreateAnimalX;
-    private javax.swing.JTextField CreateAnimalX1;
     private javax.swing.JTextField CreateAnimalY;
-    private javax.swing.JTextField CreateAnimalY1;
     private javax.swing.JButton CreatePlanta;
-    private javax.swing.JButton CreatePlanta1;
     private javax.swing.JTextField CreatePlantaVida;
-    private javax.swing.JTextField CreatePlantaVida1;
     private javax.swing.JTextField CreatePlantaX;
-    private javax.swing.JTextField CreatePlantaX1;
     private javax.swing.JTextField CreatePlantaY;
-    private javax.swing.JTextField CreatePlantaY1;
+    private javax.swing.JButton DeleteButton;
+    private javax.swing.JList<String> DeleteList;
+    private javax.swing.JButton DeleteRefresh;
     private javax.swing.JButton ReadAnimal;
     private javax.swing.JComboBox<String> ReadAnimalCombo;
     private javax.swing.JList<String> ReadAnimalList;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton UpdateAnimal;
+    private javax.swing.JTextField UpdateAnimalAtk;
+    private javax.swing.JButton UpdateAnimalButton;
+    private javax.swing.JComboBox<String> UpdateAnimalCombo;
+    private javax.swing.JTextField UpdateAnimalDes;
+    private javax.swing.JTextField UpdateAnimalFome;
+    private javax.swing.JTextField UpdateAnimalMov;
+    private javax.swing.JTextField UpdateAnimalVida;
+    private javax.swing.JTextField UpdateAnimalX;
+    private javax.swing.JTextField UpdateAnimalY;
+    private javax.swing.JButton UpdatePlanta;
+    private javax.swing.JButton UpdatePlantaButton;
+    private javax.swing.JComboBox<String> UpdatePlantaCombo;
+    private javax.swing.JTextField UpdatePlantaVida;
+    private javax.swing.JTextField UpdatePlantaX;
+    private javax.swing.JTextField UpdatePlantaY;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -960,7 +1105,6 @@ public class CrudFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
