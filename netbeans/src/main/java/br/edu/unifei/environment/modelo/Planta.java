@@ -5,6 +5,7 @@
  */
 package br.edu.unifei.environment.modelo;
 
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -19,8 +20,21 @@ public abstract class Planta<P extends Planta> extends Ser {
         this.vida += 2;
 
         if (vida >= 60) {
-            this.vida -= 10;
+            this.vida -= 50;
+            this.gerarBroto().forEach(broto -> {
+                boolean espacoLivre = true;
 
+                for (Ser ser : this.getMundo().getSeres()) {
+                    if (ser.getX() == broto.getX()
+                            && ser.getY() == broto.getY()) {
+                        espacoLivre = false;
+                    }
+                };
+
+                if (espacoLivre) {
+                    this.getMundo().addSer(broto);
+                }
+            });
         }
     }
 

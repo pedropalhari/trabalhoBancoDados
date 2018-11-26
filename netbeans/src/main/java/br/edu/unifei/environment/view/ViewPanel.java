@@ -10,6 +10,7 @@ import br.edu.unifei.environment.dao.MundoDao;
 import br.edu.unifei.environment.dao.SerDao;
 import br.edu.unifei.environment.modelo.Arvore;
 import br.edu.unifei.environment.modelo.Coelho;
+import br.edu.unifei.environment.modelo.Lobo;
 import br.edu.unifei.environment.modelo.Mundo;
 import br.edu.unifei.environment.modelo.Ser;
 import java.awt.Color;
@@ -64,12 +65,16 @@ public class ViewPanel extends JPanel {
         Color col;
 
         if (ser.getClass() == Arvore.class) {
-            c = "A" + ser.getId();
+            c = "A";
         } else if (ser.getClass() == Coelho.class) {
-            c = "C" + ser.getId();
+            c = "C";
+        } else if (ser.getClass() == Lobo.class) {
+            c = "L";
         } else {
             c = "*";
         }
+
+        c += ser.getId();
 
         int colorGradientIndex = ser.getVida() / 10;
 

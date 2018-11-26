@@ -23,7 +23,31 @@ public class Arvore extends Planta<Arvore> {
             broto.setX(this.x + 1);
             broto.setY(this.y);
             broto.setVida(10);
-
+            brotoList.add(broto);
+        }
+        
+        if (this.x - 1 > 0) {
+            Arvore broto = new Arvore();
+            broto.setX(this.x - 1);
+            broto.setY(this.y);
+            broto.setVida(10);
+            brotoList.add(broto);
+        }
+        
+        if (this.y + 1 < 20) {
+            Arvore broto = new Arvore();
+            broto.setX(this.x);
+            broto.setY(this.y + 1);
+            broto.setVida(10);
+            brotoList.add(broto);
+        }
+        
+        if (this.y - 1 > 0) {
+            Arvore broto = new Arvore();
+            broto.setX(this.x);
+            broto.setY(this.y - 1);
+            broto.setVida(10);
+            brotoList.add(broto);
         }
 
         return brotoList;

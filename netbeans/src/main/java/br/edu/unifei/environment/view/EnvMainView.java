@@ -6,6 +6,7 @@ import br.edu.unifei.environment.dao.FonteDados;
 import br.edu.unifei.environment.dao.MundoDao;
 import br.edu.unifei.environment.modelo.Arvore;
 import br.edu.unifei.environment.modelo.Coelho;
+import br.edu.unifei.environment.modelo.Lobo;
 import br.edu.unifei.environment.modelo.Mundo;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -41,31 +42,43 @@ public class EnvMainView {
         Arvore a2 = new Arvore();
         a2.setX(0);
         a2.setY(3);
-        a2.setVida(10);
+        a2.setVida(55);
 
         Coelho c1 = new Coelho();
-        c1.setX(20);
-        c1.setY(20);
+        c1.setX(3);
+        c1.setY(3);
         c1.setVida(50);
         c1.setAtaque(15);
         c1.setFome(0);
         c1.setMovimento(4);
         c1.setDesejo(40);
-
-        Coelho c2 = new Coelho();
-        c2.setX(0);
-        c2.setY(0);
-        c2.setVida(50);
-        c2.setAtaque(15);
-        c2.setFome(0);
-        c2.setMovimento(4);
-        c2.setDesejo(40);
+        
+        Lobo l1 = new Lobo();
+        l1.setX(10);
+        l1.setY(10);
+        l1.setVida(50);
+        l1.setAtaque(15);
+        l1.setFome(40);
+        l1.setMovimento(4);
+        l1.setDesejo(40);
+        
+//
+//        Coelho c2 = new Coelho();
+//        c2.setX(0);
+//        c2.setY(0);
+//        c2.setVida(50);
+//        c2.setAtaque(15);
+//        c2.setFome(0);
+//        c2.setMovimento(4);
+//        c2.setDesejo(40);
 
         Mundo m = new Mundo();
         m.addSer(a);
         m.addSer(c1);
-        m.addSer(c2);
+        m.addSer(l1);
+        //m.addSer(c2);
         m.addSer(a2);
+        
 
         mundoDao.create(m);
     }
