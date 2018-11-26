@@ -108,11 +108,7 @@ public class ViewPanel extends JPanel {
 
         List<Ser> auxList = new ArrayList<>();
 
-        
-        System.out.println(m.getSeres().size());
-
         for (Ser ser : this.m.getSeres()) {
-            System.out.println("SERES: " + ser);
             ser.update();
 
             if (ser.getVida() <= 0) {
