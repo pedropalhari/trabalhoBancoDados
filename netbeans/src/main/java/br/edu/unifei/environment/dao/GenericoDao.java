@@ -37,6 +37,18 @@ public abstract class GenericoDao<E, K> {
         em.getTransaction().commit();
     }
 
+    public void bulkUpdate(List<E> entities) {
+        em.getTransaction().begin();
+        entities.forEach(entity -> {
+            em.merge(entity);
+        });
+        em.getTransaction().commit();
+    }
+    
+    public void flush(){
+        em.flush();
+    }
+
     public E find(K key) {
         return em.find(clazz, key);
     }
@@ -53,19 +65,18 @@ public abstract class GenericoDao<E, K> {
             this.delete(obj);
         }
     }
-    
-    public List<E> findAll(){
+
+    public List<E> findAll() {
         return em.createQuery(
-            "from " + clazz.getSimpleName()
-            ).getResultList();
+                "from " + clazz.getSimpleName()
+        ).getResultList();
     }
 
-    public int getCount(){
+    public int getCount() {
         return (Integer) em.createQuery(
-            "select count(*) from " + 
-            clazz.getSimpleName() 
-            ).getSingleResult();
+                "select count(*) from "
+                + clazz.getSimpleName()
+        ).getSingleResult();
     }
-    
-    
+
 }

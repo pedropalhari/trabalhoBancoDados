@@ -6,13 +6,17 @@
 package br.edu.unifei.environment.view;
 
 import br.edu.unifei.environment.dao.FonteDados;
+import br.edu.unifei.environment.dao.MundoDao;
 import br.edu.unifei.environment.dao.SerDao;
 import br.edu.unifei.environment.modelo.Arvore;
 import br.edu.unifei.environment.modelo.Coelho;
+import br.edu.unifei.environment.modelo.Mundo;
 import br.edu.unifei.environment.modelo.Ser;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.JPanel;
 
@@ -22,10 +26,10 @@ import javax.swing.JPanel;
  */
 class DrawBlock {
 
-    char caractere;
+    String caractere;
     Color cor;
 
-    DrawBlock(char c, Color cl) {
+    DrawBlock(String c, Color cl) {
         this.caractere = c;
         this.cor = cl;
     }
@@ -33,7 +37,9 @@ class DrawBlock {
 
 public class ViewPanel extends JPanel {
 
-    SerDao s;
+    SerDao serDao;
+    MundoDao mundoDao;
+
     String[] colorGradient = {"#F39582", "#DA9178", "#C18E6F",
         "#A88A66", "#8F875D", "#768353",
         "#5D804A", "#447C41", "#2B7938", "#13762F"};
@@ -42,7 +48,8 @@ public class ViewPanel extends JPanel {
         EntityManager entityManager
                 = FonteDados.createEntityManager();
         //GrandePremioDao grDao = new GrandePremioDao(entityManager);
-        this.s = new SerDao(entityManager);
+        this.serDao = new SerDao(entityManager);
+        this.mundoDao = new MundoDao(entityManager);
     }
 
     Color hex2Rgb(String colorStr) {
@@ -53,15 +60,15 @@ public class ViewPanel extends JPanel {
     }
 
     DrawBlock getDrawBlock(Ser ser) {
-        char c;
+        String c;
         Color col;
 
         if (ser.getClass() == Arvore.class) {
-            c = 'A';
+            c = "A" + ser.getId();
         } else if (ser.getClass() == Coelho.class) {
-            c = 'C';
+            c = "C" + ser.getId();
         } else {
-            c = '*';
+            c = "*";
         }
 
         int colorGradientIndex = ser.getVida() / 10;
@@ -92,16 +99,28 @@ public class ViewPanel extends JPanel {
 
         g.setFont(new Font("Arial Bold", Font.BOLD, 12));
 
-        s.findAll().forEach(ser -> {
-            ser.update();
-            s.update(ser);
-        });
+        List<Ser> auxList = new ArrayList<>();
 
-        s.findAll().forEach(ser -> {
+        Mundo m = (Mundo) mundoDao.findAll().toArray()[0];
+
+        for (Ser ser : m.getSeres()) {
+            ser.update();
+
+            if (ser.getVida() <= 0) {
+                m.getSeres().remove(ser);
+            }
+
+        };
+
+        mundoDao.update(m);
+
+        //s.bulkUpdate(auxList);
+        for (Object serAux : serDao.findAll().toArray()) {
+            Ser ser = (Ser) serAux;
             DrawBlock db = this.getDrawBlock(ser);
             g.setColor(db.cor);
-            g.drawString(Character.toString(db.caractere), 20 * ser.getX() + 10, 20 * ser.getY() + 20);
-        });
+            g.drawString(db.caractere, 20 * ser.getX() + 5, 20 * ser.getY() + 20);
+        };
 
     }
 }

@@ -7,6 +7,7 @@ package br.edu.unifei.environment.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Mundo {
     @GeneratedValue
     int id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     List<Ser> seres = new ArrayList<>();
 
     public int getId() {
@@ -41,7 +42,7 @@ public class Mundo {
     public void setSeres(List<Ser> seres) {
         this.seres = seres;
     }
-    
+
     public void addSer(Ser s) {
         this.seres.add(s);
         s.setMundo(this);
