@@ -39,7 +39,7 @@ end note
 ' Plantas crescem baseado em sua vida, quanto mais turnos
 ' mais vida obtêm. Toda planta cresce todo turno
 Ser <|--- Planta
-abstract class Planta <P extends Planta> {
+abstract class Planta <P extends Plantag> {
   # crescer() : void
   # espalhar() : void
 }
