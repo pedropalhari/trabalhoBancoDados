@@ -40,17 +40,19 @@ public class ViewPanel extends JPanel {
 
     SerDao serDao;
     MundoDao mundoDao;
+    EntityManager em;
+    Mundo m;
+    SerDao sd;
 
     String[] colorGradient = {"#F39582", "#DA9178", "#C18E6F",
         "#A88A66", "#8F875D", "#768353",
         "#5D804A", "#447C41", "#2B7938", "#13762F"};
 
-    public ViewPanel() {
-        EntityManager entityManager
-                = FonteDados.createEntityManager();
-        //GrandePremioDao grDao = new GrandePremioDao(entityManager);
-        this.serDao = new SerDao(entityManager);
-        this.mundoDao = new MundoDao(entityManager);
+    public ViewPanel(EntityManager em, MundoDao md, Mundo m, SerDao sd) {
+        this.mundoDao = md;
+        this.em = em;
+        this.m = m;
+        this.sd = sd;
     }
 
     Color hex2Rgb(String colorStr) {
@@ -106,21 +108,23 @@ public class ViewPanel extends JPanel {
 
         List<Ser> auxList = new ArrayList<>();
 
-        Mundo m = (Mundo) mundoDao.findAll().toArray()[0];
+        
+        System.out.println(m.getSeres().size());
 
-        for (Ser ser : m.getSeres()) {
+        for (Ser ser : this.m.getSeres()) {
+            System.out.println("SERES: " + ser);
             ser.update();
 
             if (ser.getVida() <= 0) {
-                m.getSeres().remove(ser);
+                this.m.getSeres().remove(ser);
             }
 
         };
 
-        mundoDao.update(m);
+        this.mundoDao.update(m);
 
         //s.bulkUpdate(auxList);
-        for (Object serAux : serDao.findAll().toArray()) {
+        for (Object serAux : this.sd.findAll().toArray()) {
             Ser ser = (Ser) serAux;
             DrawBlock db = this.getDrawBlock(ser);
             g.setColor(db.cor);

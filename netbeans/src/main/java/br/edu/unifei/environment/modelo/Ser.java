@@ -20,7 +20,7 @@ import javax.persistence.ManyToOne;
 public abstract class Ser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     int id;
     
     @ManyToOne
